@@ -1,53 +1,96 @@
-export default function Events() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold mb-8">Events</h1>
-      <p className="text-lg mb-4">Welcome to the events page of Phoenix Tech Club.</p>
-      <div className="bg-card rounded-lg p-6 shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Upcoming Events</h2>
-        <ul className="space-y-4">
-          <li className="flex items-center space-x-4">
-            <div className="bg-primary text-primary-foreground rounded-full p-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-                <line x1="16" x2="16" y1="2" y2="6" />
-                <line x1="8" x2="8" y1="2" y2="6" />
-                <line x1="3" x2="21" y1="10" y2="10" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-medium">Annual Hackathon</h3>
-              <p className="text-sm text-muted-foreground">July 15-17, 2023</p>
-            </div>
-          </li>
-          <li className="flex items-center space-x-4">
-            <div className="bg-primary text-primary-foreground rounded-full p-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
-                <path d="M10 2c1 .5 2 2 2 5" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-medium">AI Workshop Series</h3>
-              <p className="text-sm text-muted-foreground">Every Tuesday, Starting August 1, 2023</p>
-            </div>
-          </li>
-          <li className="flex items-center space-x-4">
-            <div className="bg-primary text-primary-foreground rounded-full p-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 3h20" />
-                <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
-                <path d="m7 21 5-5 5 5" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-medium">Tech Talk: Future of Web Development</h3>
-              <p className="text-sm text-muted-foreground">September 5, 2023</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </>
-  )
-}
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { PlusCircle } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
+
+const subwings = [
+  {
+    id: 1,
+    name: "Web Development",
+    image: "https://i.ibb.co/GvDPhLM/image.webp",
+    description:
+      "Explore the world of web technologies, from front-end frameworks to back-end systems.",
+  },
+  {
+    id: 2,
+    name: "Artificial Intelligence",
+    image: "https://i.ibb.co/1MjDLJq/ai.webp",
+    description:
+      "Dive into machine learning, neural networks, and the cutting-edge of AI research.",
+  },
+  {
+    id: 3,
+    name: "Cybersecurity",
+    image: "https://i.ibb.co/d40fBxg/design.webp",
+    description:
+      "Learn about network security, ethical hacking, and protecting digital assets.",
+  },
+  {
+    id: 4,
+    name: "Mobile App Development",
+    image: "https://i.ibb.co/d2SnTK0/masti.webp",
+    description:
+      "Create innovative mobile applications for iOS and Android platforms.",
+  },
+  {
+    id: 5,
+    name: "Data Science",
+    image: "https://i.ibb.co/GvDPhLM/image.webp",
+    description:
+      "Analyze complex datasets, visualize information, and extract meaningful insights.",
+  },
+];
+
+export default function EventsPage() {
+  return (
+    <div className="container mx-auto p-4 relative min-h-screen">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Tech Club Events</h1>
+        <Button
+          size="lg"
+          variant="outline"
+          onClick={() => {
+            // Add your logic for adding a new event here
+            console.log("Add new event");
+          }}
+        >
+          <PlusCircle className="mr-2 h-4 w-4" /> Add Event
+        </Button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {subwings.map((subwing) => (
+          <Card key={subwing.id} className="flex flex-col">
+            <CardHeader>
+              <CardTitle>{subwing.name}</CardTitle>
+              <CardDescription>{subwing.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <Image
+                src={subwing.image}
+                alt={`${subwing.name} subwing`}
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-md"
+              />
+            </CardContent>
+            <CardFooter className="flex justify-end mt-4">
+              <Button variant="outline">
+                <Link href={`/events/wings`}>View Events</Link>
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
