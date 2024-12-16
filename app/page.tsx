@@ -16,7 +16,7 @@ const upcomingEvents = [
   {
     name: "Design Thinking Seminar",
     description: "Learn the basics of design thinking",
-    posterUrl: " https://i.ibb.co/JydrcmV/image.webp",
+    posterUrl: "https://i.ibb.co/d40fBxg/design.webp",
     subwing: "Design",
   },
 ];
