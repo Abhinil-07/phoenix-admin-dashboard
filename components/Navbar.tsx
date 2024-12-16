@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/mode-toggle"
-import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+// import { Button } from "@/components/ui/button"
+import { ModeToggle } from "@/components/mode-toggle";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/events', label: 'Events' },
-]
+  { href: "/", label: "Home" },
+  { href: "/events", label: "Events" },
+];
 
 export function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -29,7 +29,9 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   "transition-colors hover:text-foreground/80 px-2 py-1 relative",
-                  pathname === item.href ? "text-foreground" : "text-foreground/60"
+                  pathname === item.href
+                    ? "text-foreground"
+                    : "text-foreground/60"
                 )}
               >
                 {item.label}
@@ -53,6 +55,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
-
