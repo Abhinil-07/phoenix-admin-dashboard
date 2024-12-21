@@ -37,11 +37,7 @@ const events = [
   },
 ];
 
-export default function SubwingEventsPage({
-  params,
-}: {
-  params: { subwingId: string };
-}) {
+export default function SubwingEventsPage() {
   // In a real application, you would fetch the subwing name based on the subwingId
   const subwingName = "Web Development";
 
@@ -77,9 +73,7 @@ export default function SubwingEventsPage({
                   {new Date(event.date).toLocaleDateString()}
                 </div>
                 <Button variant="outline" asChild size="sm">
-                  <a href={`/events/${params.subwingId}/${event.id}`}>
-                    View More Details
-                  </a>
+                  <a href={`/events/wings/eventName`}>View More Details</a>
                 </Button>
               </div>
             </CardContent>
